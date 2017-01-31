@@ -18,20 +18,20 @@ class Proxy
   def initialize(target_object)
     @object = target_object
     @messages = []
-	end
+  end
 
-	def called?(msg)
-		@messages.include?(msg)
-	end
+  def called?(msg)
+    @messages.include?(msg)
+  end
 
-	def number_of_times_called(msg)
-		@messages.count(msg)
-	end
+  def number_of_times_called(msg)
+    @messages.count(msg)
+  end
 
-	# WRITE CODE HERE
-	def method_missing(method_name, *args, &block)
-		@messages << method_name
-		@object.send(method_name, *args, &block)
+  # WRITE CODE HERE
+  def method_missing(method_name, *args, &block)
+    @messages << method_name
+    @object.send(method_name, *args, &block)
   end
 
 end
